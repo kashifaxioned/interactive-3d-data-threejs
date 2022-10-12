@@ -1,0 +1,302 @@
+$primary-color: #fff;
+$secondary-color: #686767;
+$pc:1440px;
+$small-pc: 1280px;
+$ipad-pro:1024px;
+$ipad:768px;
+$large-mobile:425px;
+$med-mobile:375px;
+$small-mobile:320px;
+
+
+@mixin breakpoint($device) {
+  @if($device=='pc'){
+    @media screen and (max-width: $pc) {
+      @content;
+    }
+  }
+	@else if($device=='small-pc'){
+    @media screen and (max-width: $small-pc) {
+      @content;
+    }
+  } 
+  @else if($device=='ipad-pro') {
+    @media screen and (max-width: $ipad-pro) {
+      @content;
+    }
+  }
+  @else if($device=='ipad') {
+    @media screen and (max-width: $ipad) {
+      @content;
+    }
+  }
+  @else if($device=='large-mobile') {
+    @media screen and (max-width: $large-mobile) {
+      @content;
+    }
+  }
+  @else if($device=='med-mobile') {
+    @media screen and (max-width: $med-mobile) {
+      @content;
+    }
+  }
+  @else if($device=='small-mobile') {
+    @media screen and (max-width: $small-mobile) {
+      @content;
+    }
+  }
+  @else if($device=='min-ipad') {
+    @media screen and (min-width: $ipad) {
+      @content;
+    }
+  }
+}
+
+
+* {
+	font-family: 'Poppins', sans-serif; 
+	box-sizing: border-box; 
+}
+
+body { 
+	margin: 0;
+	color: $primary-color;
+	font-family: 'Poppins', sans-serif; 
+}
+
+/* Styles start */
+.wrapper {
+	width: 85%;
+	padding: 50px 0;
+	margin: 0 auto;
+}
+
+section {
+	width: 100%;
+}
+
+.section1 {
+	padding: 10rem 0 12rem;
+	background-image: url('../images/bg.jpg'); 
+	background-position: left 33rem center;
+
+	@include breakpoint(small-pc) {
+		background-position: left 17rem center;
+	}
+
+	.section-title {
+		font-size: 8.5rem;
+		font-weight: 500;
+		line-height: 1;
+		text-transform: uppercase;
+
+		@include breakpoint(small-pc) {
+			font-size: 7rem;
+		}
+
+		.thin { font-weight: 100; }
+	}
+}
+.section3 { background-color: darkturquoise; }
+
+.interactive-data-section { 
+	height: 100%;
+	min-height: 120vh;
+	padding: 5rem 0;
+	position: relative;
+	background-color: #000;
+
+	.section-title {
+		width: 40%;
+		margin: 0 auto;
+		font-size: 9.5rem;
+		font-weight: 500;
+		line-height: 1;
+		text-align: center;
+		text-transform: uppercase;
+
+		@include breakpoint(pc) {
+			width: 60%;
+		}
+
+		@include breakpoint(small-pc) {
+			font-size: 7rem;
+		}
+
+		.thin { font-weight: 100; }
+	}
+
+	.section-info {
+		padding-top: 10px;
+		background: linear-gradient(270deg, #4c65f7 31.21%, #ff62aa 73.32%);
+		background-clip: text;
+		-webkit-background-clip: text;
+	  -webkit-text-fill-color: transparent;
+		font-size: 25px;
+		font-weight: 600;
+		text-align: center;
+
+		@include breakpoint(small-pc) {
+			font-size: 18px;
+		}
+	}
+
+	.canvas-info-container {
+		position: absolute;
+		top: 60%;
+		right: 0;
+		left: 0;
+
+		@include breakpoint(pc) { top: 61%; }
+		@include breakpoint(small-pc) { top: 59%; }
+	}
+
+	.graph-type-list {
+		width: 43.3%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+		@include breakpoint(pc) { width: 48.3%; }
+		@include breakpoint(pc) { width: 54.3%; }
+   
+		&_item {
+			flex-basis: calc(20% - 4.5rem);
+			font-size: 22px;
+			font-weight: 600;	
+			text-align: center;
+			@include breakpoint(pc) { flex-basis: calc(20% - 3rem); }
+		}
+	}
+
+	.graph-title {
+		padding: 1.5rem 0;
+		font-size: 16px;
+		font-weight: 600;
+		color: $secondary-color;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	.graph-category-list {
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+
+		&_item{
+			color: $secondary-color;
+			font-size: 35px;
+			font-weight: bold;
+			text-transform: uppercase;
+			text-align: center;
+			transition: 1s ease-in-out;
+
+			&.active { color: $primary-color; }
+		}
+		
+	}
+
+	.change-graph-buttons {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 11.5rem;
+		text-align: center;
+	
+		button {
+			padding: 20px;
+			border: 1px solid rgba(255,255,255,.5);
+			border-radius: 50%;
+			display: block;
+			background-color: transparent;
+			color: $primary-color;
+			text-indent: -999999px;
+			position: absolute;
+			&:hover { animation: borderSpin 1s ease-in; }
+		}
+	
+		.next-button { 
+			right: 39%; 
+			@include breakpoint(pc) { right: 37.5%; }
+			@include breakpoint(pc) { right: 32.5%; }
+		}
+		.previous-button {
+			left: 39%; 
+			@include breakpoint(pc) { left: 37.5%; }
+			@include breakpoint(pc) { left: 32.5%; }
+		}
+	
+		.next-button::before {
+			content: "\f061";
+			font-family: "FontAwesome";
+			font-size: 20px;
+			float: right;
+			text-indent: 0;
+			color: inherit;
+		}
+	
+		.previous-button::before {
+			content: "\f060";
+			font-family: "FontAwesome";
+			font-size: 20px;
+			float: right;
+			text-indent: 0;
+			color: inherit;
+		}
+	}
+
+	.section-note {
+		width: 50%;
+		padding: 20px 45px;
+		border: 2px solid #ff62aa;
+		border-radius: 45px;
+		margin: 4rem auto 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 20px;
+	
+		&_title {
+			background: linear-gradient(270deg, #4c65f7 8.21%, #ff62aa 66.32%);
+			background-clip: text;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			font-size: 20px;
+			font-weight: 500;
+			text-transform: uppercase;
+
+			&::before {
+				content: "\f24e";
+				margin-right: 5px;
+				font-family: 'FontAwesome';
+				font-size: 20px;
+			}
+		}
+	}
+}
+
+
+
+
+.reverseSpin { animation: reverseBorderSpin 1s ease-in;	}
+
+
+@keyframes borderSpin {
+	0% { border-color: transparent; }
+	25% { border-right: 1px solid rgba(255,255,255,.5); }
+	50% { border-bottom: 1px solid rgba(255,255,255,.5); }
+	75% { border-left: 1px solid rgba(255,255,255,.5); }
+	100% { border: 1px solid rgba(255,255,255,.5); }
+}
+
+@keyframes reverseBorderSpin {
+	0% { border-color: transparent; }
+	25% { border-top: 1px solid rgba(255,255,255,.5); }
+	50% { border-left: 1px solid rgba(255,255,255,.5); }
+	75% { border-bottom: 1px solid rgba(255,255,255,.5); }
+	100% { border-right: 1px solid rgba(255,255,255,.5); }
+}
