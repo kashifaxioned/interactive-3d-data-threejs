@@ -8,8 +8,8 @@ $(".graph-category-list").slick({
   prevArrow: prevGraphButton,
   nextArrow: nextGraphButton,
   initialSlide: 0,
-  slidesToScroll: 1,
 	easing: 'ease-in',
+  swipe: false,
   responsive: [
     {
       breakpoint: 1300,
